@@ -48,7 +48,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     let ms_diff = now
         .date_naive()
         .signed_duration_since(date)
-        .num_milliseconds();
+        .num_milliseconds()
+        .abs();
 
     let diff = TimeDifferential::new(ms_diff);
 
