@@ -1,15 +1,16 @@
 pub mod file {
     use std::{
+        error::Error,
         fs::{self, File, OpenOptions},
         io::Write,
         path::PathBuf,
         str::FromStr,
     };
 
-    use crate::models::{alias::Alias, error::Error};
+    use crate::models::alias::Alias;
 
     /// Parses aliases from a tmp file
-    pub fn get_aliases(path: PathBuf) -> Result<Vec<Alias>, Error> {
+    pub fn get_aliases(path: PathBuf) -> Result<Vec<Alias>, Box<dyn Error>> {
         let aliases = match fs::read_to_string(&path) {
             Ok(contents) => contents
                 .split("\n")
@@ -29,7 +30,7 @@ pub mod file {
     }
 
     /// Adds a new alias to the aliases file
-    pub fn make_alias(path: PathBuf, alias: Alias) -> Result<(), Error> {
+    pub fn make_alias(path: PathBuf, alias: Alias) -> Result<(), Box<dyn Error>> {
         let mut file = OpenOptions::new()
             .append(true)
             .open(path)

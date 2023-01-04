@@ -6,7 +6,7 @@ use clap::{command, Parser};
 pub struct CliArgs {
     /// The date to check against
     #[arg(short = 'd', long = "date")]
-    pub date: Option<String>,
+    pub date: String,
 
     /// The alias to save the date as
     #[arg(short = 'a', long = "alias")]
