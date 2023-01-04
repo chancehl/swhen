@@ -6,6 +6,15 @@ pub struct Alias {
     pub date: String,
 }
 
+impl Alias {
+    pub fn new(name: &str, date: &str) -> Self {
+        Alias {
+            name: name.to_string(),
+            date: date.to_string(),
+        }
+    }
+}
+
 impl FromStr for Alias {
     type Err = ();
 
@@ -23,6 +32,6 @@ impl FromStr for Alias {
 
 impl ToString for Alias {
     fn to_string(&self) -> String {
-        format!("{:?}={:?}", self.name, self.date)
+        format!("{}={}", self.name, self.date)
     }
 }
