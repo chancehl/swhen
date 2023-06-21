@@ -5,7 +5,7 @@ use clap::{command, Parser};
 #[command(author, version, about, long_about = None)]
 pub struct CliArgs {
     /// The date to check against
-    #[arg(short = 'd', long = "date")]
+    #[arg(index = 1)]
     pub date: String,
 
     /// The alias to save the date as
