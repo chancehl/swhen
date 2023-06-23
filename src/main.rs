@@ -13,7 +13,7 @@ use crate::{
     utils::file::{get_alias, save_alias},
 };
 
-const DATE_FORMAT: &str = "%m-%d-%Y";
+const DATE_FORMAT: &str = "%m/%d/%Y";
 const SWHEN_FILE: &str = "swhen";
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -21,7 +21,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let now = Utc::now();
 
-    let date_regex = Regex::new("\\d{2}-\\d{2}-\\d{4}").unwrap();
+    let date_regex = Regex::new("^\\d{2}/\\d{2}/\\d{4}$").unwrap();
 
     let aliases_loc = temp_dir().join(SWHEN_FILE);
 
